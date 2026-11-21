@@ -60,7 +60,7 @@ Curious about how this extension works and what inspired its development?
 
 Read the blog post:
 
-**[Behind the Scenes of Gemini CLI Auto Retry](http://wpconstructor.com/blog/gemini-cli-auto-retry)**
+**[Behind the Scenes of Gemini CLI Auto Retry](http://wpconstructor.com/blog/gemini-auto-retry)**
 
 ## License
 
