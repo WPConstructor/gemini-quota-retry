@@ -1,4 +1,4 @@
-# Gemini CLI Quota Retry
+# Gemini Quota Retry
 
 A Gemini CLI extension that automatically retries requests when API quota errors are detected. It waits 70 seconds before retrying, helping you continue working without manually restarting failed requests.
 
