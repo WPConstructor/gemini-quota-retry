@@ -1,9 +1,17 @@
 #!/usr/bin/env node
 
 const fs = require("node:fs");
+const os = require("node:os");
+const path = require("node:path");
 
 const WAIT_MS = 70_000;
-const LOG_FILE = "/tmp/gemini-quota-retry-error.log";
+
+const LOG_FILE_NAME = "gemini-quota-retry-error.log";
+
+const LOG_LOCATIONS = [
+  path.join(os.tmpdir(), LOG_FILE_NAME),
+  path.join(os.homedir(), LOG_FILE_NAME),
+];
 
 const QUOTA_ERROR_PATTERNS = [
   /you exceeded your current quota/i,
@@ -22,22 +30,29 @@ function writeErrorLog(...args) {
       if (arg instanceof Error) return arg.message;
 
       if (typeof arg === "object" && arg !== null) {
-        return JSON.stringify(arg);
+        try {
+          return JSON.stringify(arg);
+        } catch {
+          return String(arg);
+        }
       }
 
       return String(arg);
     })
     .join(" ");
 
-  try {
-    fs.appendFileSync(
-      LOG_FILE,
-      `[${timestamp}] ${message}\n`,
-      "utf8"
-    );
-  } catch {
-    // Do not interrupt hook execution if logging fails.
+  const logEntry = `[${timestamp}] ${message}\n`;
+
+  for (const logFile of LOG_LOCATIONS) {
+    try {
+      fs.appendFileSync(logFile, logEntry, "utf8");
+      return;
+    } catch {
+      // Try the next available location.
+    }
   }
+
+  // Logging is optional. Never interrupt hook execution.
 }
 
 function sleep(ms) {
@@ -66,6 +81,7 @@ function readTranscript(transcriptPath) {
         "[Quota Retry] Transcript does not exist:",
         transcriptPath
       );
+
       return "";
     }
 
