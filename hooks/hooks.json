@@ -4,10 +4,10 @@
       {
         "hooks": [
           {
-            "name": "quota-auto-retry",
+            "name": "gemini-quota-retry",
             "type": "command",
-            "command": "node ${extensionPath}${/}hooks${/}quota-retry.mjs",
-            "timeout": 90000,
+            "command": "node ${extensionPath}${/}scripts${/}gemini-quota-retry.js",
+            "timeout": 100000,
             "description": "Wait 70 seconds and retry after quota errors"
           }
         ]

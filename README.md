@@ -14,71 +14,45 @@ Released under the **MIT License**.
 
 ## Installation
 
-### Method 1: Install directly from GitHub
+### Method 1: Using Git (Recommended)
 
-```bash
-gemini extensions install https://github.com/WPConstructor/gemini-quota-retry
-```
-
-Restart Gemini CLI after installation.
-
-### Method 2: Manual installation
-
-If automatic installation fails, you can install the extension manually.
-
-**Step 1: Download the repository**
-
-Using Git:
+Open your terminal (Terminal on macOS/Linux, Command Prompt or PowerShell on Windows) and run:
 
 ```bash
 git clone https://github.com/WPConstructor/gemini-quota-retry.git
+cd gemini-quota-retry
 ```
 
-Alternatively, download the ZIP archive directly from GitHub:
+### Method 2: Downloading as a ZIP Archive
 
-https://github.com/WPConstructor/gemini-quota-retry/archive/refs/heads/main.zip
-
-Extract the ZIP archive.
-
-**Step 2: Copy the extension**
-
-Create the Gemini CLI extensions directory if it doesn't already exist:
+1. Go to the repository page on GitHub.
+2. Click the **Code** button and select **Download ZIP**.
+3. Extract the downloaded ZIP file to your preferred directory.
+4. Open your terminal and navigate into the extracted folder:
 
 ```bash
-mkdir -p ~/.gemini/extensions
+cd path/to/gemini-quota-retry
 ```
 
-Copy the extension into the directory:
+### Installation & Linking
+
+Link the extension in Gemini CLI:
 
 ```bash
-cp -r gemini-quota-retry ~/.gemini/extensions/quota-retry
+gemini extensions link .
 ```
 
-Make sure the following file exists:
-
-```text
-~/.gemini/extensions/quota-retry/gemini-extension.json
-```
-
-**Step 3: Restart Gemini CLI**
-
-Close and restart Gemini CLI to load the extension.
+Restart Gemini CLI to load the extension.
 
 ## Uninstallation
 
-To uninstall the extension, run:
+If you no longer need the extension, you can remove it using the Gemini CLI:
 
 ```bash
 gemini extensions uninstall quota-retry
 ```
 
-If you installed it manually, remove its directory:
-
-```bash
-rm -rf ~/.gemini/extensions/quota-retry
-```
-
-Restart Gemini CLI afterwards.
+You can also safely delete the local repository folder from your computer after uninstallation.
 
 ## Behind the Scenes
 

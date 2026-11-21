@@ -1,5 +1,5 @@
 {
-  "name": "quota-retry",
+  "name": "gemini-quota-retry",
   "version": "0.1.0",
   "description": "Automatically retries Gemini CLI requests after API quota errors."
 }
